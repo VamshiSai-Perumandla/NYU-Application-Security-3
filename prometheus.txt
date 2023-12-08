@@ -1,30 +1,28 @@
 Write-up:
-    First, I have installed helm on windows by downloading the suitable binary and adding it to the Enivronment path variable.
-    
-    Then using helm I could add repository for prometheus using the command:
-        helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-    
-    I have strated minikube and spun up the docker and kubernetes instances.
+Initially, I installed Helm on Windows by downloading the appropriate binary and integrating it into the Environment path variable.
 
-    Next, I have installed Prometheus by running the following command:
-        helm install prometheus prometheus-community/prometheus
-    This command will install Prometheus with its default configuration.
-    
-    To configure Prometheus for our specific needs, I will use configmaps, which are a way of providing configuration information to running pods. 
-    I can see the available configmaps by running the command:
-        kubectl get configmaps
-    Output:
-        - kube-root-ca.crt
-        - prometheus-alertmanager
-        - prometheus-server
-        
-    I can output the current configuration of a specific configmap by running the command:
-        kubectl get configmap <configmap_name> -o yaml
-        
-    I can edit the configuration of a configmap by running the command:
-        kubectl edit configmap <configmap_name>
-    
-    I was particularly interested in prometheus-server where the target was localhost:9090 which I changed to proxy-server:8080
+Next, I utilized Helm to add a repository for Prometheus with the following command:
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 
-    Finally, I have open the proxy-server website and went to /metrics to look at the current metrics of the data acquired by prometheus.
-    Later after registering a user and causing the web application to trow a 404 error, I went back and looked at the metrics and noticed that the events were recorded.
+I then initiated Minikube, setting up Docker and Kubernetes environments.
+
+Following that, I deployed Prometheus using the command:
+helm install prometheus prometheus-community/prometheus
+This step installs Prometheus with its standard configuration.
+
+For tailoring Prometheus to our specific requirements, I employed configmaps. These are utilized to provide configuration data to active pods. The available configmaps can be viewed with:
+kubectl get configmaps
+The output included:
+- kube-root-ca.crt
+- prometheus-alertmanager
+- prometheus-server
+
+To review the current setup of a particular configmap, I used:
+kubectl get configmap <configmap_name> -o yaml
+
+Modifications to a configmap's configuration were made using:
+kubectl edit configmap <configmap_name>
+
+My focus was on the prometheus-server configmap, specifically changing the target from localhost:9090 to proxy-server:8080.
+
+Lastly, I accessed the proxy-server webpage and navigated to /metrics to examine Prometheus's collected data metrics. After registering a user and triggering a 404 error in the web application, I revisited the metrics and observed that these events were successfully logged.
