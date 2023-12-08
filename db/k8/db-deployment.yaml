@@ -18,10 +18,16 @@ spec:
           image: nyuappsec/assign3-db:v0
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: thisisatestthing.
+              valueFrom:
+                secretKeyRef:
+                  name: giftcard-app-secrets
+                  key: db_password
 
             - name: MYSQL_DATABASE
-              value: GiftcardSiteDB
+              valueFrom:
+                secretKeyRef:
+                  name: giftcard-app-secrets
+                  key: db_name
 
           ports:
             - containerPort: 3306
