@@ -347,7 +347,7 @@ metadata:
     chart: prometheus-20.2.0
     component: server
     heritage: Helm
-    release: prometheus
+    release: prometheus 
   name: prometheus-server
   namespace: default
   resourceVersion: "5869"
