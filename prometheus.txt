@@ -21,7 +21,7 @@ To review the current setup of a particular configmap, I used:
 kubectl get configmap <configmap_name> -o yaml
 
 Modifications to a configmap's configuration were made using:
-kubectl edit configmap <configmap_name>
+kubectl edit configmap <configmap_name> 
 
 My focus was on the prometheus-server configmap, specifically changing the target from localhost:9090 to proxy-server:8080.
 
