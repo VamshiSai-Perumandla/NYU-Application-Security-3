@@ -1,4 +1,4 @@
-# Homework 3: Deployment Gone Wrong
+# Deployment Gone Wrong
 
 ## Get Latest updates
 
@@ -57,7 +57,7 @@ As always, please make use of office hours and ask questions on Ed Discussion.
 
 ## Part 0: Setting up Your Environment
 
-To complete this assignment, you will need Docker, minikube, and kubectl.
+To complete this, you will need Docker, minikube, and kubectl.
 Installing this is not simple, and is highly platform dependent.
 Rather than detail how to install this software on different platforms, this
 document instead links to the relevant information on how to install these tools
@@ -69,7 +69,7 @@ To install Kubectl, please see the following [Website.](https://kubernetes.io/do
 
 To install Minikube, please see the following [Website.](https://minikube.sigs.k8s.io/docs/start/)
 
-Like in the previous assignments, we will be using Git and GitHub for submission,
+Like in the previous github repositories, we will be using Git and GitHub for submission,
 so please ensure you still have Git installed. Though we will not be checking
 for them, remember that it is in your best interest to continue to follow git
 best practices.
@@ -175,7 +175,7 @@ used with both kubernetes yaml files and how they may be accessed via Python
 [Kubernetes documentation on
 secrets](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/).
 
-For this portion of the assignment, you should submit:
+For this portion, you should submit:
 
 1. All kubernetes yaml files modified to use secrets
 2. All changes necessary to the Web application (limited to 
@@ -244,72 +244,3 @@ Hints:
 
 * Each running service gets a DNS name that corresponds to the service name. So to refer to the proxy running on port 8080, you would use `proxy-service:8080`.
 
-## Grading
-
-Total points: 100
-
-Part 0 is worth 20 points, but you are not required to submit anything; get everything up and running!
-
-Part 1 is worth 40 points:
-
-* 20 points for the yaml files that use Kubernetes secrets.
-* 10 points for the changes to the Django code.
-* 10 points for the writeup.
-
-Part 2 is worth 40 points:
-
-* 10 points for removing dangerous monitoring
-* 10 points for expanding monitoring
-* 10 points for all yaml files for Prometheus
-* 10 points for the writeup.
-
-## What to Submit
-To submit your code, please only submit a file called `git_link.txt` that contains the name of your repository. 
-For example, if your GitHub account username is exampleaccount, you would submit a text file named `git_link.txt` to 
-Gradescope with only one line that reads the following:
-
-    assignment-3-exampleaccount
-
-While there is no autograder for Fall 2023, it will be easy for the TA to find your repository and download it.
-
-Alongside your `git_link.txt`, to make life easier on the TA, so he won't need to search the write-ups, 
-submit the following write-ups too on Gradescope:
-
-* secrets.txt
-* Prometheus.txt
-
-
-The repository should contain:
-
-* Part 1
-  * Your yaml files using Kubernetes secrets.
-  * All files you changed from the GiftcardSite/ directory.
-  * A writeup called secrets.txt on the root of your repository
-* Part 2
-  * A modified GiftcardSite/LegacySite/views.py file.
-  * Your yaml files for running Prometheus.
-  * A writeup called prometheus.txt.
-
-## Concluding Remarks
-
-With the changes you made in this assignment, your company is a lot closer to a
-decent deployment solution. However, even with the changes, there are a lot of
-things that are still lacking.
-
-One of the benefits of using Kubernetes is the ability to create replicas that
-are load balanced to avoid overwhelming one instance of the application. The
-same can be done with other microservices such as the database, though this
-would require database syncing across the difference database instances. These
-solutions do not currently exist in this version of the assignment.
-
-For more experience working with cloud security and deployment, consider taking
-this one step further and replicating these microservices.
-Attempt to load balance over many replicas, and syncing databases.
-Try using Prometheus to gather more metrics from all of your different microservices.
-Try adding logging and other useful tools.
-
-Though these attempts will not be graded, and should not be submitted as part of
-the assignment, they should help you learn a lot about how using cloud
-deployment helps you preserve the availability of your service (and the
-microservices that comprise it) and how good monitoring and logging can help you
-spot errors in the application before they become serious issues.
